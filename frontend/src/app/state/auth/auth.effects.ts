@@ -15,6 +15,14 @@ export class AuthEffects {
                 catchError(() => of(AuthActions.loginFailed()))),
             )));
 
+    public logout = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AuthActions.logout),
+            switchMap(({ token }) => this.authService.logout(token).pipe(
+                map(result => result ? AuthActions.logoutSuccess() : AuthActions.logoutFailed()),
+                catchError(() => of(AuthActions.logoutFailed()))),
+            )));
+
     constructor(
         private actions$: Actions,
         private authService: AuthService,

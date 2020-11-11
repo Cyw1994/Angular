@@ -22,6 +22,14 @@ export const logout = createAction(
     props<{ token: string }>()
 );
 
+export const logoutSuccess = createAction(
+    AUTH_PREFIX + 'logout success',
+);
+
+export const logoutFailed = createAction(
+    AUTH_PREFIX + 'logout failed',
+);
+
 export const changePwdWithOldOne = createAction(
     AUTH_PREFIX + 'change passWord with old one',
     props<{ account: string, oldPwd: string }>()

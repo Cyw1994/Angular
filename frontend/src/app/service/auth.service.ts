@@ -7,4 +7,8 @@ export class AuthService {
     public login(credentials: Credentials): Observable<string> {
         return of(`${credentials.account}${Date.parse(new Date().toDateString())}`);
     }
+
+    public logout(token: string): Observable<boolean> {
+        return of(true);
+    }
 }
